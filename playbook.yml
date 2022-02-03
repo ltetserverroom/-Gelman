@@ -1,0 +1,110 @@
+- name: Main Playbook 
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 1
+    apt:
+      upgrade: dist
+
+- name: 2
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 3
+    apt:
+       name: curl
+- name: 4
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 5
+    apt:
+       name: docker
+- name: 5
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 6
+    apt:
+       name: docker-compose
+- name: 7
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 8
+    ufw:
+     state: enabled
+     policy: allow
+- name: 9
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 10
+    ufw:
+     rule: allow
+     port: 80
+     proto: tcp
+- name: 11
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 12
+    ufw:
+     rule: allow
+     port: 1834
+     proto: tcp
+- name: 9
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 10
+    ufw:
+     rule: allow
+     port: 8080 
+     proto: tcp
+- name: 13
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 14
+    service:
+      name: ssh
+      state: restarted
+- name: 15
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 16
+    service:
+      name: ufw
+      state: restarted
+- name: 17
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 18
+    file:
+      path=/etc/ansible/skillcloud-nginx
+      state=directory
+
+- name: 21
+  hosts: projectwsr 
+  become: True
+
+  tasks:
+  - name: 22
+    reboot:
+      msg: "Reboot initiated by Ansible"
+      connect_timeout: 5
+      reboot_timeout: 600
